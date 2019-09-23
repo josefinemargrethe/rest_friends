@@ -4,20 +4,73 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css?family=Major+Mono+Display&display=swap" rel="stylesheet" />
+    <title>Frææænds</title>
+    <style>
+      #friends {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        margin: 5vw;
+        grid-gap: 5vw;
+      }
+
+      #friends article {
+        border: 1px solid black;
+        padding: 1vw;
+      }
+
+      img {
+        width: 200px;
+      }
+
+      .pulse {
+        animation-name: pulse_kf;
+        animation-duration: 3s;
+        animation-iteration-count: infinite;
+        animation-direction: alternate;
+        animation-timing-function: ease-in;
+      }
+
+      @keyframes pulse_kf {
+        0% {
+          transform: scale(1);
+        }
+
+        50% {
+          transform: scale(1.2) rotate(-15deg);
+        }
+
+        100% {
+          transform: scale(1) rotate(15deg);
+        }
+      }
+
+      h1 {
+        text-align: center;
+        font-family: "Major Mono Display", monospace;
+        text-shadow: 1px 1px 1px hotpink;
+      }
+
+      h3,
+      p {
+        font-family: "Helvetica Neue";
+        font-weight: 200;
+      }
+    </style>
   </head>
   <body>
-    <div id="friends"></div>
-    <template>
-      <article>
-        <h1></h1>
-        <h3></h3>
-        <p class="city"></p>
-        <p class="personality"></p>
-        <img src="" alt="" />
-      </article>
-    </template>
-
+    <button>Add friend</button>
+    <div id="friends">
+      <template>
+        <article>
+          <h1 class="pulse"></h1>
+          <h3></h3>
+          <img src="" alt="" />
+          <p class="city"></p>
+          <p class="personality"></p>
+        </article>
+      </template>
+    </div>
     <script src="script.js"></script>
   </body>
 </html>
