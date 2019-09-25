@@ -9,18 +9,40 @@
     <style>
       #friends {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(2, 1fr);
         margin: 5vw;
         grid-gap: 5vw;
       }
 
-      #friends article {
+      #friends .friend {
         border: 1px solid black;
         padding: 1vw;
       }
 
       img {
         width: 200px;
+      }
+
+      .slide {
+        animation-name: slide_kf;
+        animation-duration: 7s;
+        animation-iteration-count: infinite;
+        animation-direction: initial;
+        animation-timing-function: ease-in;
+      }
+
+      @keyframes slide_kf {
+        0% {
+          transform: translateX(1vw);
+        }
+
+        40% {
+          transform: translateX(1vw);
+        }
+
+        100% {
+          transform: translateX(110vw);
+        }
       }
 
       .pulse {
@@ -37,37 +59,104 @@
         }
 
         50% {
-          transform: scale(1.2) rotate(-15deg);
+          transform: scale(1.2);
         }
 
         100% {
-          transform: scale(1) rotate(15deg);
+          transform: scale(1) rotate(360deg);
         }
       }
 
       h1 {
         text-align: center;
         font-family: "Major Mono Display", monospace;
-        text-shadow: 1px 1px 1px hotpink;
+        text-shadow: 1px 1px 1px rgb(245, 255, 105);
       }
 
       h3,
-      p {
+      p,
+      label {
         font-family: "Helvetica Neue";
         font-weight: 200;
+      }
+
+      label {
+        font-size: 0.8rem;
+      }
+
+      button {
+        border: 1px black solid;
+        padding: 0.5vw;
+        cursor: pointer;
+        margin-top: 0.5vw;
+      }
+
+      button:hover {
+        background-color: rgb(245, 255, 105);
+      }
+
+      .newfriend {
+        margin: 0 5vw;
+      }
+
+      .newfriend_container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-row-gap: 1vw;
+      }
+
+      .addBtn {
+        margin: 2vw 5vw 0 5vw;
+      }
+
+      @media screen and (min-width: 750px) {
+        #friends {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          margin: 5vw;
+          grid-gap: 5vw;
+        }
+      }
+
+      @media screen and (min-width: 1050px) {
+        .newfriend {
+          max-width: 30vw;
+        }
       }
     </style>
   </head>
   <body>
-    <button>Add friend</button>
+    <form class="newfriend">
+      <h3>Hey, want to make a new friend?</h3>
+      <div class="newfriend_container">
+        <label for="new_name">Name:</label>
+        <input type="text" class="form-control" id="new_name" placeholder="" required />
+        <label for="new_nickname">Nick-name:</label>
+        <input type="text" class="form-control" id="new_nickname" placeholder="" required />
+        <label for="new_age">Age:</label>
+        <input type="text" class="form-control" id="new_age" placeholder="numbers only, please!" pattern="[0-9]{1,2}" required />
+        <label for="new_city">Hometown:</label>
+        <input type="text" class="form-control" id="new_city" placeholder="" required />
+        <label for="new_personality">Personality:</label>
+        <input type="text" class="form-control" id="new_personality" placeholder="seperate by commas" size="30" required />
+        <label for="new_image">Upload image:</label>
+        <input type="file" id="new_image" name="image" accept="image/png, image/jpeg" required />
+      </div>
+      <button type="submit">Make your new friend!</button>
+    </form>
+
+    <!--Old button connected to the post-function-->
+    <button class="addBtn">Make a new friend (old button)</button>
+
     <div id="friends">
       <template>
-        <article>
-          <h1 class="pulse"></h1>
+        <article class="friend">
+          <h1 class=""></h1>
           <h3></h3>
           <img src="" alt="" />
           <p class="city"></p>
           <p class="personality"></p>
+          <button class="deleteBtn">Delete this friend</button>
         </article>
       </template>
     </div>
