@@ -7,9 +7,17 @@
     <link href="https://fonts.googleapis.com/css?family=Major+Mono+Display&display=swap" rel="stylesheet" />
     <title>Frææænds</title>
     <style>
+      .show {
+        display: block;
+      }
+
+      .hide {
+        display: none;
+      }
+
       #friends {
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: 1fr;
         margin: 5vw;
         grid-gap: 5vw;
       }
@@ -95,7 +103,12 @@
         background-color: rgb(245, 255, 105);
       }
 
-      .newfriend {
+      .notValid {
+        background: rgb(230, 34, 0);
+      }
+
+      .newfriend,
+      .formEdit {
         margin: 0 5vw;
       }
 
@@ -119,7 +132,8 @@
       }
 
       @media screen and (min-width: 1050px) {
-        .newfriend {
+        .newfriend,
+        .formEdit {
           max-width: 30vw;
         }
       }
@@ -127,26 +141,54 @@
   </head>
   <body>
     <form class="newfriend">
+      <h2></h2>
       <h3>Hey, want to make a new friend?</h3>
       <div class="newfriend_container">
         <label for="new_name">Name:</label>
-        <input type="text" class="form-control" id="new_name" placeholder="" required />
+        <input type="text" class="form-control" id="new_name" name="name" placeholder="" required />
         <label for="new_nickname">Nick-name:</label>
-        <input type="text" class="form-control" id="new_nickname" placeholder="" required />
+        <input type="text" class="form-control" id="new_nickname" name="nickname" placeholder="" required />
         <label for="new_age">Age:</label>
-        <input type="text" class="form-control" id="new_age" placeholder="numbers only, please!" pattern="[0-9]{1,2}" required />
+        <input type="text" class="form-control" id="new_age" name="age" placeholder="numbers only, please!" pattern="[0-9]{1,3}" required />
         <label for="new_city">Hometown:</label>
-        <input type="text" class="form-control" id="new_city" placeholder="" required />
+        <input type="text" class="form-control" id="new_city" name="city" placeholder="" required />
         <label for="new_personality">Personality:</label>
-        <input type="text" class="form-control" id="new_personality" placeholder="seperate by commas" size="30" required />
-        <label for="new_image">Upload image:</label>
-        <input type="file" id="new_image" name="image" accept="image/png, image/jpeg" required />
+        <input type="text" class="form-control" id="new_personality" name="personality" placeholder="seperate by commas" size="30" required />
+        <label for="new_image">Insert link to image:</label>
+        <input type="text" class="form-control" id="new_image" name="picture" placeholder="http://..." required />
+        <!-- <label for="new_image">Upload image:</label>
+        <input type="file" id="new_image" name="picture" accept="image/png, image/jpeg" /> -->
       </div>
       <button type="submit">Make your new friend!</button>
     </form>
 
-    <!--Old button connected to the post-function-->
+    <!-- NEW FORM FOR EDITING -->
+    <form class="formEdit hide">
+      <h2></h2>
+      <h3>Go on and edit that friend!</h3>
+      <div class="newfriend_container">
+        <label for="new_name">Name:</label>
+        <input type="text" class="form-control" id="new_name" name="name" placeholder="" required />
+        <label for="new_nickname">Nick-name:</label>
+        <input type="text" class="form-control" id="new_nickname" name="nickname" placeholder="" required />
+        <label for="new_age">Age:</label>
+        <input type="text" class="form-control" id="new_age" name="age" placeholder="numbers only, please!" pattern="[0-9]{1,3}" required />
+        <label for="new_city">Hometown:</label>
+        <input type="text" class="form-control" id="new_city" name="city" placeholder="" required />
+        <label for="new_personality">Personality:</label>
+        <input type="text" class="form-control" id="new_personality" name="personality" placeholder="seperate by commas" size="30" required />
+        <label for="new_image">Insert link to image:</label>
+        <input type="text" class="form-control" id="new_image" name="picture" placeholder="http://..." required />
+        <input type="hidden" name="id" />
+        <!-- <label for="new_image">Upload image:</label>
+              <input type="file" id="new_image" name="picture" accept="image/png, image/jpeg" /> -->
+      </div>
+      <button type="submit">Edit this friend!</button>
+    </form>
+
+    <!--Old button connected to the post-function
     <button class="addBtn">Make a new friend (old button)</button>
+    -->
 
     <div id="friends">
       <template>
@@ -156,6 +198,7 @@
           <img src="" alt="" />
           <p class="city"></p>
           <p class="personality"></p>
+          <button class="editBtn">Edit this friend</button>
           <button class="deleteBtn">Delete this friend</button>
         </article>
       </template>
