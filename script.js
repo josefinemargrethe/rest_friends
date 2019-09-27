@@ -6,7 +6,7 @@ const formEdit = document.querySelector("form.formEdit");
 let uploaded;
 
 //use javascript validation instead of HTML/Form validation
-form.setAttribute("novalidate", true);
+//form.setAttribute("novalidate", true);
 
 //Make a new friend when click submit
 form.addEventListener("submit", evt => {
@@ -42,21 +42,21 @@ formEdit.addEventListener("submit", evt => {
 
 //These next parts are about validation
 
-form.elements.name.addEventListener("input", e => {
-  form.elements.name.classList.remove("notValid");
-});
+// form.elements.name.addEventListener("input", e => {
+//   form.elements.name.classList.remove("notValid");
+// });
 
-form.elements.name.addEventListener("blur", e => {
-  console.log("The user moves away from name");
-  console.log(form.elements.name.checkValidity());
+// form.elements.name.addEventListener("blur", e => {
+//   console.log("The user moves away from name");
+//   console.log(form.elements.name.checkValidity());
 
-  if (form.elements.name.checkValidity()) {
-  } else {
-    form.elements.name.classList.add("notValid");
-  }
-  //the user thinks he is done --> now we can validate the field
-  //think about what the best solution is for the user
-});
+//   if (form.elements.name.checkValidity()) {
+//   } else {
+//     form.elements.name.classList.add("notValid");
+//   }
+//   //the user thinks he is done --> now we can validate the field
+//   //think about what the best solution is for the user
+// });
 
 /*
 Events we can work with:
@@ -160,7 +160,7 @@ function fetchAndPopulate(id) {
     });
 }
 
-function put(liPersonality) {
+function put() {
   let data = {
     name: formEdit.elements.name.value,
     nickname: formEdit.elements.nickname.value,
@@ -195,12 +195,6 @@ function put(liPersonality) {
       daddy.querySelector(".personality").innerHTML = `<article>${updatedFriend.name}'s best qualities:</article><article><ul><li>` + updatedFriend.personality + `</li></ul></article>`;
 
       //cleanJSON(updatedFriend);
-
-      //   parentElement.querySelector("h1").textContent = updatedFriend.name;
-      //   parentElement.querySelector("h3").textContent = `Also known as ${updatedFriend.nickname}`;
-      //   parentElement.querySelector(".city").textContent = `${updatedFriend.nickname}'s ${updatedFriend.age} years old and lives in ${updatedFriend.city}`;
-      //   parentElement.querySelector("img").src = updatedFriend.picture;
-      //   parentElement.querySelector(".personality").innerHTML = `<article>${updatedFriend.name}'s best qualities:</article><article><ul><li>` + liPersonality + `</li></ul></article>`;
 
       console.log(data);
     });
