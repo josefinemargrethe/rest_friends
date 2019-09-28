@@ -7,6 +7,11 @@
     <link href="https://fonts.googleapis.com/css?family=Major+Mono+Display&display=swap" rel="stylesheet" />
     <title>Frææænds</title>
     <style>
+      /*Hiding scrollbar to make the top button stand out*/
+      ::-webkit-scrollbar {
+        display: none;
+      }
+
       .show {
         display: block;
       }
@@ -102,6 +107,13 @@
       button:hover {
         background-color: rgb(245, 255, 105);
       }
+
+      /* #new_name:valid + span {
+        content: "✓";
+      }
+      #new_name:invalid + span {
+        content: "✖";
+      } */
 
       /* .notValid {
   background: rgb(230, 34, 0);
@@ -216,6 +228,33 @@ body {
         background-repeat: no-repeat;
       }
 
+      /*********** GÅ TIL TOP KNAP  **************/
+
+      #myBtn {
+        position: fixed;
+        bottom: 30px;
+        right: 10px;
+        z-index: 99;
+        outline: none;
+        background-color: #fff;
+        color: black;
+        cursor: pointer;
+        padding: 1rem;
+        border-radius: 3px;
+        font-size: 0.8rem;
+        font-family: "Helvetica Neue";
+        font-weight: 300;
+        opacity: 0.8;
+      }
+
+      .myBtn {
+        display: none;
+      }
+
+      #myBtn:hover {
+        background-color: rgb(245, 255, 105);
+      }
+
       @media screen and (min-width: 750px) {
         #friends {
           display: grid;
@@ -297,6 +336,8 @@ body {
         </article>
       </template>
     </div>
+
+    <button onclick="topFunction()" id="myBtn" class="myBtn" title="Go to top">Top</button>
     <script src="script.js"></script>
   </body>
 </html>

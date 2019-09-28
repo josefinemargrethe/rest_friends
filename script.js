@@ -112,7 +112,7 @@ function getFriend(friend, liPersonality, data, updatedFriend) {
     copy.querySelector("img").src = `https://boris4life-d49c.restdb.io/media/${friend.picture}?s=t`;
   }
 
-  copy.querySelector(".city").textContent = `${friend.nickname}'s ${friend.age} years old and lives in ${friend.city}`;
+  copy.querySelector(".city").textContent = `${friend.nickname} is ${friend.age} years old and lives in ${friend.city}`;
 
   copy.querySelector(".personality").innerHTML = `<article>${friend.name}'s best qualities:</article><article><ul><li>` + liPersonality + `</li></ul></article>`;
 
@@ -190,7 +190,7 @@ function put() {
       console.log(updatedFriend.name);
       daddy.querySelector("h1").textContent = updatedFriend.name;
       daddy.querySelector("h3").textContent = `Also known as ${updatedFriend.nickname}`;
-      daddy.querySelector(".city").textContent = `${updatedFriend.nickname}'s ${updatedFriend.age} years old and lives in ${updatedFriend.city}`;
+      daddy.querySelector(".city").textContent = `${updatedFriend.nickname} is ${updatedFriend.age} years old and lives in ${updatedFriend.city}`;
       daddy.querySelector("img").src = updatedFriend.picture;
       daddy.querySelector(".personality").innerHTML = `<article>${updatedFriend.name}'s best qualities:</article><article><ul><li>` + updatedFriend.personality + `</li></ul></article>`;
 
@@ -243,4 +243,28 @@ function deleteFriend(id) {
       console.log(`.friend[data-friendid="${id}"]`);
       document.querySelector(`.friend[data-friendid="${id}"]`).remove();
     });
+}
+
+// When the user scrolls down 50px from the top of the document, show the button
+window.onscroll = function() {
+  scrollFunction();
+};
+
+function scrollFunction() {
+  console.log("Scroll funtion");
+  if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+    document.querySelector("#myBtn").classList.add("show");
+    document.querySelector("#myBtn").classList.remove("hide");
+    document.querySelector("#myBtn").classList.remove("myBtn");
+  } else {
+    document.querySelector("#myBtn").classList.add("hide");
+    document.querySelector("#myBtn").classList.remove("show");
+  }
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+  console.log("Top function");
+  document.body.scrollTop = 0; // For Safari
+  document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
 }
