@@ -1,0 +1,25 @@
+{
+  "name": "friends_rest_mini",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "minify-js": "minify script.js > script.min.js",
+    "minify-html": "minify index.html > index.min.html",
+    "minify-css": "minify style.css > style.min.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/josefinemargrethe/rest_friends.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/josefinemargrethe/rest_friends/issues"
+  },
+  "homepage": "https://github.com/josefinemargrethe/rest_friends#readme",
+  "devDependencies": {
+    "minify": "^4.1.3"
+  }
+}
